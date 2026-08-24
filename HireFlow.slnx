@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="HireFlow.API/HireFlow.API.csproj" Id="e804ad06-1dfa-405f-8dca-e3179a2b8cec" />
+    <Project Path="HireFlow.Application/HireFlow.Application.csproj" Id="19f557b2-1ffc-43f7-84d0-edb11ff9a3ca" />
+    <Project Path="HireFlow.Domain/HireFlow.Domain.csproj" Id="e90a21ca-4d72-4da7-a168-8412437c32d7" />
+    <Project Path="HireFlow.Infrastructure/HireFlow.Infrastructure.csproj" Id="7d92b6f6-444f-48b3-862f-dbce77370c3c" />
+    <Project Path="HireFlow.Persistence/HireFlow.Persistence.csproj" Id="32e6ea0f-6d7f-4063-b285-c99ffed92517" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="HireFlow.IntegrationTests/HireFlow.IntegrationTests.csproj" Id="ce670c8e-4722-4e2b-890e-ad9e2707f914" />
+    <Project Path="HireFlow.UnitTests/HireFlow.UnitTests.csproj" Id="15a775ef-742b-489d-8147-a4ec137a9964" />
+  </Folder>
+</Solution>
