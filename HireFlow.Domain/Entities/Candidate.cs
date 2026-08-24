@@ -17,7 +17,7 @@ namespace HireFlow.Domain.Entities
         public string? GithubUrl { get; private set; }
         public int ExperienceYears { get; private set; }
         public string? Summary { get; private set; }
-        public User User { get; private set; } = null!
+        public User User { get; private set; } = null!;
 
         private Candidate()
         {
