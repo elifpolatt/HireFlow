@@ -1,4 +1,5 @@
-﻿using HireFlow.Persistence.Context;
+﻿using HireFlow.Application.Contracts.Persistence;
+using HireFlow.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,8 @@ namespace HireFlow.Persistence
             {
                 options.UseSqlServer(connectionString);
             });
+
+            services.AddScoped<IJobRepository, IJobRepository>();
 
             return services;
         }
