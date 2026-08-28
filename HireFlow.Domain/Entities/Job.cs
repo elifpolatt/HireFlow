@@ -40,11 +40,19 @@ namespace HireFlow.Domain.Entities
         }
         public void Publish()
         {
+            if(Status != JobStatus.Draft)
+            {
+                throw new InvalidOperationException("Only draft jobs can be publised.");
+            }
             Status = JobStatus.Published;
         }
 
         public void Close()
         {
+            if (Status != JobStatus.Published)
+            {
+                throw new InvalidOperationException("Only published jobs can be closed.");
+            }
             Status = JobStatus.Closed;
         }
 
@@ -58,6 +66,11 @@ namespace HireFlow.Domain.Entities
             decimal? salaryMax
         )
         {
+            if(Status == JobStatus.Closed)
+            {
+                throw new InvalidOperationException("A closed job cannot be updated.");
+            }
+
             Title = title;
             Description = description;
             Location = location;

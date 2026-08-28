@@ -21,6 +21,10 @@ namespace HireFlow.Persistence.Repositories
             await _context.Jobs.AddAsync(job, cancellationToken);
         }
 
+        public void Delete(Job job)
+        {
+            _context.Jobs.Remove(job);        }
+
         public async Task<IReadOnlyList<Job>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _context.Jobs.AsNoTracking().OrderByDescending(x => x.CreatedAt).ToListAsync(cancellationToken);
@@ -29,6 +33,11 @@ namespace HireFlow.Persistence.Repositories
         public async Task<Job?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             return await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+        }
+
+        public IQueryable<Job> Query()
+        {
+            return _context.Jobs.AsQueryable();
         }
 
         public async Task SaveChangesAsync(CancellationToken cancellationToken)

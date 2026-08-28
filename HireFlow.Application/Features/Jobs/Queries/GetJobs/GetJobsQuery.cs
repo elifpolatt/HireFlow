@@ -1,4 +1,5 @@
-﻿using HireFlow.Application.Features.Jobs.Dtos;
+﻿using HireFlow.Application.Common.Models;
+using HireFlow.Application.Features.Jobs.Dtos;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace HireFlow.Application.Features.Jobs.Queries.GetJobs
         int PageSize = 10,
         string? Search = null,
         string? Location = null,
-        string? Department = null
-        ) : IRequest<IReadOnlyList<JobDto>>;
+        string? Department = null,
+        string? SortBy = "CreatedAt",
+        string? SortDirection = "desc"
+        ) : IRequest<PaginatedResult<JobDto>>;
 }
