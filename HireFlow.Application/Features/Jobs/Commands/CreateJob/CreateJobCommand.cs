@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HireFlow.Application.Features.Jobs.Commands
+namespace HireFlow.Application.Features.Jobs.Commands.CreateJob
 {
     public record CreateJobCommand(
         string Title,

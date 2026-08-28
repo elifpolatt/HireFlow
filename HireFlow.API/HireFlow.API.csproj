@@ -14,16 +14,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HireFlow.Application\HireFlow.Application.csproj" />
     <ProjectReference Include="..\HireFlow.Infrastructure\HireFlow.Infrastructure.csproj" />
     <ProjectReference Include="..\HireFlow.Persistence\HireFlow.Persistence.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
