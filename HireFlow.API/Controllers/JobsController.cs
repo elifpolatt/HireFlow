@@ -5,10 +5,12 @@ using HireFlow.Application.Features.Jobs.Commands.UpdateJob;
 using HireFlow.Application.Features.Jobs.Queries.GetJobById;
 using HireFlow.Application.Features.Jobs.Queries.GetJobs;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HireFlow.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class JobsController : ControllerBase

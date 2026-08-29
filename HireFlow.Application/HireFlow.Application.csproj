@@ -17,4 +17,8 @@
     <ProjectReference Include="..\HireFlow.Domain\HireFlow.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Authentication\Commands\RefreshToken\" />
+  </ItemGroup>
+
 </Project>
