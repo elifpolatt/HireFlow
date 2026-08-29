@@ -13,16 +13,20 @@ public class LoginCommandHandler
     private readonly IJwtService _jwtService;
     private readonly IRefreshTokenGenerator _refreshTokenGenerator;
 
+    private readonly IRefreshTokenService _refreshTokenService;
+
     public LoginCommandHandler(
         IUserRepository userRepository,
         IPasswordHasher passwordHasher,
         IJwtService jwtService,
-        IRefreshTokenGenerator refreshTokenGenerator)
+        IRefreshTokenGenerator refreshTokenGenerator,
+        IRefreshTokenService refreshTokenService)
     {
         _userRepository = userRepository;
         _passwordHasher = passwordHasher;
         _jwtService = jwtService;
         _refreshTokenGenerator = refreshTokenGenerator;
+        _refreshTokenService = refreshTokenService;
     }
 
     public async Task<AuthenticationResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
@@ -48,6 +52,10 @@ public class LoginCommandHandler
         var accessTokenExpiresAt = _jwtService.GetAccessTokenExpiration();
 
         var refreshToken = _refreshTokenGenerator.Generate();
+
+        var refreshTokenExpiresAt = DateTime.UtcNow.AddDays(7);
+
+        await _refreshTokenService.StoreAsync(refreshToken, user.Id, refreshTokenExpiresAt, cancellationToken);
 
         return new AuthenticationResponse(accessToken, refreshToken, accessTokenExpiresAt);
     }

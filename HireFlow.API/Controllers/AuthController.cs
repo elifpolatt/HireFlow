@@ -31,7 +31,7 @@ namespace HireFlow.API.Controllers
         }
 
         [HttpPost("refresh")]
-        public async Task<IActionResult> Refresh( [FromBody] RefreshTokenCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> Refresh( [FromBody] Application.Features.Authentication.Commands.RefreshToken.RefreshTokenCommand command, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(command, cancellationToken);
 

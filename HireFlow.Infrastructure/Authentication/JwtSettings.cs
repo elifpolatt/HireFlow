@@ -11,6 +11,7 @@ namespace HireFlow.Infrastructure.Authentication
         public string Issuer { get; set; } = null!;
 
         public string Audience { get; set; } = null!;
+
         public int AccessTokenExpirationMinutes { get; set; }
     }
 }

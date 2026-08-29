@@ -13,7 +13,7 @@ namespace HireFlow.Infrastructure
         {
             var redisConnection = configuration.GetConnectionString("Redis") ?? throw new InvalidDataException("Redis connection string is missing.");
 
-            services.AddSingleton(ConnectionMultiplexer.Connect(redisConnection));
+            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnection));
 
             services.AddScoped<IRefreshTokenService, RedisRefreshTokenService>();
 

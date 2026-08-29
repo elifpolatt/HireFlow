@@ -38,6 +38,11 @@ namespace HireFlow.Infrastructure.Authentication
 
             var expiry = expiresAt - DateTime.UtcNow;
 
+            if (expiry <= TimeSpan.Zero)
+            {
+                throw new ArgumentException("Refresh token expiration must be in the future.", nameof(expiresAt));
+            }
+
             await _database.StringSetAsync(key, userId.ToString(), expiry);
         }
     }
