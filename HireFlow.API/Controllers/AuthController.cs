@@ -29,5 +29,13 @@ namespace HireFlow.API.Controllers
             var result = await _sender.Send(command, cancellationToken);
             return Ok(result);
         }
+
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh( [FromBody] RefreshTokenCommand command, CancellationToken cancellationToken)
+        {
+            var result = await _sender.Send(command, cancellationToken);
+
+            return Ok(result);
+        }
     }
 }
