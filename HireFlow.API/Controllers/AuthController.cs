@@ -1,4 +1,5 @@
 ﻿using HireFlow.Application.Features.Authentication.Commands.Login;
+using HireFlow.Application.Features.Authentication.Commands.Logout;
 using HireFlow.Application.Features.Authentication.Commands.Register;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,14 @@ namespace HireFlow.API.Controllers
             var result = await _sender.Send(command, cancellationToken);
 
             return Ok(result);
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout(LogoutCommand command, CancellationToken cancellationToken)
+        {
+            await _sender.Send(command, cancellationToken);
+
+            return NoContent();
         }
     }
 }
