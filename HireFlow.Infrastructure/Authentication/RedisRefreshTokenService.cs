@@ -17,12 +17,17 @@ namespace HireFlow.Infrastructure.Authentication
 
             var value = await _database.StringGetAsync(key);
 
-            if (!value.HasValue)
+            if (value.IsNullOrEmpty)
             {
                 return null;
             }
 
-            return Guid.Parse(value!.ToString());
+            if (!Guid.TryParse(value.ToString(), out var userId))
+            {
+                return null;
+            }
+
+            return userId;
         }
 
         public async Task RemoveAsync(string refreshToken, CancellationToken cancellationToken)
