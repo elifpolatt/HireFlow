@@ -2,7 +2,10 @@
 using HireFlow.Application.Features.Authentication.Commands.Logout;
 using HireFlow.Application.Features.Authentication.Commands.Register;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace HireFlow.API.Controllers
 {
@@ -45,6 +48,21 @@ namespace HireFlow.API.Controllers
             await _sender.Send(command, cancellationToken);
 
             return NoContent();
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public IActionResult Me()
+        {
+            return Ok(new
+            {
+                UserId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+                          ?? User.FindFirstValue(JwtRegisteredClaimNames.Sub),
+
+                Email = User.FindFirstValue(ClaimTypes.Email),
+
+                Role = User.FindFirstValue(ClaimTypes.Role)
+            });
         }
     }
 }
