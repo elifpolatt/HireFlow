@@ -18,15 +18,21 @@ namespace HireFlow.Application.Features.Authentication.Commands.Register
         private readonly IRefreshTokenGenerator _refreshTokenGenerator;
         private readonly IRefreshTokenService _refreshTokenService;
 
-        public RegisterCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtService jwtService,
+        private readonly ICandidateRepository _candidateRepository;
+
+        public RegisterCommandHandler(IUserRepository userRepository,
+        IPasswordHasher passwordHasher,
+        IJwtService jwtService,
         IRefreshTokenGenerator refreshTokenGenerator,
-        IRefreshTokenService refreshTokenService)
+        IRefreshTokenService refreshTokenService,
+        ICandidateRepository candidateRepository)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
             _jwtService = jwtService;
             _refreshTokenGenerator = refreshTokenGenerator;
             _refreshTokenService = refreshTokenService;
+            _candidateRepository = candidateRepository;
         }
 
         public async Task<AuthenticationResponse> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -48,6 +54,10 @@ namespace HireFlow.Application.Features.Authentication.Commands.Register
                 UserRole.Candidate);
 
             await _userRepository.AddAsync(user, cancellationToken);
+
+            var candidate = new Candidate(user.Id);
+
+            await _candidateRepository.AddAsync(candidate, cancellationToken);
 
             await _userRepository.SaveChangesAsync(cancellationToken);
 

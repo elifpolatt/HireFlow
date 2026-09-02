@@ -33,12 +33,14 @@ namespace HireFlow.Domain.Entities
             string? phoneNumber,
             DateTime? birthDate,
             string? linkedinUrl,
+            string? githubUrl,
             int experienceYears,
             string? summary)
         {
             PhoneNumber = phoneNumber;
             BirthDate = birthDate;
             LinkedinUrl = linkedinUrl;
+            GithubUrl = githubUrl;
             ExperienceYears = experienceYears;
             Summary = summary;
         }

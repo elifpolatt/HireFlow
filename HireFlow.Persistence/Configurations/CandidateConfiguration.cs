@@ -16,9 +16,8 @@ namespace HireFlow.Persistence.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.PhoneNumber).HasMaxLength(30);
-
             builder.Property(x => x.CvUrl).HasMaxLength(500);
-
+            builder.Property(x => x.ExperienceYears).IsRequired();
             builder.Property(x => x.LinkedinUrl).HasMaxLength(500);
             builder.Property(x => x.GithubUrl).HasMaxLength(500);
             builder.Property(x => x.Summary).HasMaxLength(2000);
