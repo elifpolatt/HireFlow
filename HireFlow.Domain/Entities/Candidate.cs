@@ -19,6 +19,11 @@ namespace HireFlow.Domain.Entities
         public string? Summary { get; private set; }
         public User User { get; private set; } = null!;
 
+        public ICollection<Skill> Skills { get; private set; } = new List<Skill>();
+
+        public ICollection<Experience> Experiences { get; private set; } = new List<Experience>();
+
+        public ICollection<Education> Educations { get; private set; } = new List<Education>();
         private Candidate()
         {
 
