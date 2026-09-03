@@ -9,10 +9,11 @@ namespace HireFlow.Persistence.Configurations
 {
     public class SkillConfiguration : IEntityTypeConfiguration<Skill>
     {
-        public void Configure(EntityTypeBuilder<Skill> builder>) {
+        public void Configure(EntityTypeBuilder<Skill> builder) {
+
             builder.ToTable("Skills");
 
-            builder.HasKey( x => x.Id );
+            builder.HasKey( x => x.Id);
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
 
