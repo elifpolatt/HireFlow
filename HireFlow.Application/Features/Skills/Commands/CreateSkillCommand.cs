@@ -5,6 +5,6 @@ using System.Text;
 
 namespace HireFlow.Application.Features.Skills.Commands
 {
-    public record CreateSkillCommand(Guid CandidateId, string Name) : IRequest<Guid>;
+    public record CreateSkillCommand(string Name) : IRequest<Guid>;
     
 }

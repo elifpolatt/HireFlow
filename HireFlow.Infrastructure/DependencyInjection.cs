@@ -1,5 +1,7 @@
-﻿using HireFlow.Application.Contracts.Services;
+﻿using HireFlow.Application.Common.Interfaces;
+using HireFlow.Application.Contracts.Services;
 using HireFlow.Infrastructure.Authentication;
+using HireFlow.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StackExchange.Redis;
@@ -24,6 +26,10 @@ namespace HireFlow.Infrastructure
             services.AddScoped<IPasswordHasher, PasswordHasher>();
 
             services.AddScoped<IRefreshTokenGenerator, RefreshTokenGenerator>();
+
+            services.AddHttpContextAccessor();
+
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             return services;
         }

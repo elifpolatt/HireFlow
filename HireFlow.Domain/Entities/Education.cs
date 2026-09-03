@@ -21,9 +21,9 @@ namespace HireFlow.Domain.Entities
 
         public Education(Guid candidateId, string schoolName, string department, DateTime startDate, DateTime? endDate)
         {
-            if(EndDate.HasValue && endDate.Value < startDate)
+            if( endDate.HasValue && endDate.Value < startDate)
             {
-                throw new InvalidOperationException("End daet cannot be before start date");
+                throw new InvalidOperationException("End date cannot be before start date");
             }
             CandidateId = candidateId;
             SchoolName = schoolName;

@@ -28,6 +28,8 @@ namespace HireFlow.Persistence
 
             services.AddScoped<ICandidateRepository, CandidateRepository>();
 
+            services.AddScoped<ISkillRepository, SkillRepository>();
+
             return services;
         }
     }

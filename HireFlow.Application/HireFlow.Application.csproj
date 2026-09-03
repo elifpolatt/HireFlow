@@ -17,4 +17,9 @@
     <ProjectReference Include="..\HireFlow.Domain\HireFlow.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Educations\Queries\" />
+    <Folder Include="Features\Experiences\Queries\" />
+  </ItemGroup>
+
 </Project>

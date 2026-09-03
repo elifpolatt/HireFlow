@@ -7,25 +7,26 @@ namespace HireFlow.Domain.Entities
 {
     public class Experience : AuditableEntity
     {
-        public Guid CandidateId { get; set; }
+        public Guid CandidateId { get; private set; } 
 
-        public string CompanyName { get; set; }
+        public string CompanyName { get; private set; } = null!;
 
-        public string Position { get; set; }
+        public string Position { get; private set; } = null!;
 
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate { get; private set; }
 
-        public DateTime? EndDate { get; set; }
+        public DateTime? EndDate { get; private set; }
 
-        public string? Description { get; set; }
+        public string? Description { get; private set; }
 
-        public Candidate Candidate { get; set; }
+        public Candidate Candidate { get; private set; } = null!;
 
         private Experience()
         {
         }
 
-        public Experience(Guid candidateId,
+        public Experience(
+            Guid candidateId,
             string companyName,
             string position,
             DateTime startDate,
@@ -41,12 +42,18 @@ namespace HireFlow.Domain.Entities
             Description = description;
         }
 
-        public void Update(string companyName,
+        public void Update(
+            string companyName,
             string position,
             DateTime startDate,
             DateTime? endDate,
             string? description)
         {
+            if (endDate.HasValue && endDate.Value < startDate)
+            {
+                throw new InvalidOperationException("End date cannot be before start date.");
+            }
+
             CompanyName = companyName;
             Position = position;
             StartDate = startDate;

@@ -16,14 +16,9 @@ namespace HireFlow.Persistence.Repositories
             _context = context;
         }
 
-        public async Task AddAsync(Candidate candidate, CancellationToken cancellationToken)
-        {
-            await _context.Candidates.AddAsync(candidate, cancellationToken);
-        }
-
         public async Task<Candidate?> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken)
         {
-            return await _context.Candidates.Include(x => x.User).FirstOrDefaultAsync(x => x.UserId == userId, cancellationToken);
+            return await _context.Candidates.FirstOrDefaultAsync(x => x.UserId == userId, cancellationToken);
         }
 
         public async Task SaveChangesAsync(CancellationToken cancellationToken)

@@ -13,11 +13,20 @@ namespace HireFlow.Persistence.Context
         }
 
         public DbSet<User> Users => Set<User>();
+
         public DbSet<Candidate> Candidates => Set<Candidate>();
 
         public DbSet<Domain.Entities.Application> Applications => Set< Domain.Entities.Application>();
+        
         public DbSet<Interview> Interviews => Set<Interview>();
         public DbSet<Job> Jobs => Set<Job>();
+
+        public DbSet<Skill> Skills => Set<Skill>();
+
+        public DbSet<Experience> Experiences => Set<Experience>();
+
+        public DbSet<Education> Educations => Set<Education>();
+
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

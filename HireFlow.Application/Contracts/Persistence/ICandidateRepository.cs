@@ -9,8 +9,6 @@ namespace HireFlow.Application.Contracts.Persistence
     {
         Task<Candidate?> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken);
 
-        Task AddAsync(Candidate candidate, CancellationToken cancellationToken);
-
         Task SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

@@ -22,16 +22,13 @@ namespace HireFlow.Infrastructure.Authentication
 
         public string GenerateAccessToken(User user)
         {
-            var claims = new List<Claim>
+            var claims = new[]
             {
-                new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim( ClaimTypes.NameIdentifier, user.Id.ToString()),
 
-                new(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim( ClaimTypes.Email, user.Email),
 
-                new(ClaimTypes.Email, user.Email),
-
-                new(ClaimTypes.Role, user.Role.ToString()),
-
+                new Claim( ClaimTypes.Role, user.Role.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.SecretKey));
