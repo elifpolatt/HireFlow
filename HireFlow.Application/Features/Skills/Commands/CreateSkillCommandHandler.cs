@@ -2,9 +2,6 @@
 using HireFlow.Application.Contracts.Persistence;
 using HireFlow.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HireFlow.Application.Features.Skills.Commands
 {

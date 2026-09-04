@@ -1,7 +1,4 @@
 ﻿using HireFlow.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HireFlow.Application.Contracts.Persistence
 {
